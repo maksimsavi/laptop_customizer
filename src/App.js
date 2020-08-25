@@ -4,8 +4,9 @@ import React, { Component } from 'react';
 // in both URLs and html attributes
 import slugify from 'slugify';
 import Summary from './comps/Summary';
-import Options from './comps/Options';
+import Total from './comps/Total';
 import './App.css';
+import Options from './comps/Options';
 
 // This object will allow us to
 // easily convert numbers into US dollar values
@@ -77,10 +78,7 @@ class App extends Component {
     });
 
 
-    const total = Object.keys(this.state.selected).reduce(
-      (acc, curr) => acc + this.state.selected[curr].cost,
-      0
-    );
+    
 
     return (
       <div className="App">
@@ -95,12 +93,7 @@ class App extends Component {
           <section className="main__summary">
             <h2>Your cart</h2>
             <Summary selected={this.state.selected} USCurrencyFormat={USCurrencyFormat}/>
-            <div className="summary__total">
-              <div className="summary__total__label">Total</div>
-              <div className="summary__total__value">
-                {USCurrencyFormat.format(total)}
-              </div>
-            </div>
+            <Total selected={this.state.selected} USCurrencyFormat={USCurrencyFormat}/>
           </section>
         </main>
       </div>

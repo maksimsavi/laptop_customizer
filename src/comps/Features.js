@@ -17,8 +17,8 @@ class Features extends React.Component {
                 id={itemHash}
                 className="feature__option"
                 name={slugify(feature)}
-                checked={item.name === this.props.selected[feature].name}
-                onChange={e => this.props.updateFeature(feature, item)}
+                checked={item.name === this.state.selected[feature].name}
+                onChange={e => this.updateFeature(feature, item)}
               />
               <label htmlFor={itemHash} className="feature__label">
                 {item.name} ({USCurrencyFormat.format(item.cost)})
