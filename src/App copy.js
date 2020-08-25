@@ -3,8 +3,7 @@ import React, { Component } from 'react';
 // Normalizes string as a slug - a string that is safe to use
 // in both URLs and html attributes
 import slugify from 'slugify';
-import Summary from './comps/Summary';
-import Options from './comps/Options';
+
 import './App.css';
 
 // This object will allow us to
@@ -76,6 +75,20 @@ class App extends Component {
       );
     });
 
+    const summary = Object.keys(this.state.selected).map((feature, idx) => {
+      const featureHash = feature + '-' + idx;
+      const selectedOption = this.state.selected[feature];
+
+      return (
+        <div className="summary__option" key={featureHash}>
+          <div className="summary__option__label">{feature} </div>
+          <div className="summary__option__value">{selectedOption.name}</div>
+          <div className="summary__option__cost">
+            {USCurrencyFormat.format(selectedOption.cost)}
+          </div>
+        </div>
+      );
+    });
 
     const total = Object.keys(this.state.selected).reduce(
       (acc, curr) => acc + this.state.selected[curr].cost,
@@ -94,7 +107,7 @@ class App extends Component {
           </form>
           <section className="main__summary">
             <h2>Your cart</h2>
-            <Summary selected={this.state.selected} USCurrencyFormat={USCurrencyFormat}/>
+            {summary}
             <div className="summary__total">
               <div className="summary__total__label">Total</div>
               <div className="summary__total__value">
