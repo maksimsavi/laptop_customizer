@@ -143,3 +143,8 @@ while keeping them available to the keyboard */
 .summary__total__value {
   text-decoration: underline;
 }
+
+ul,li { list-style-type: none;
+  list-style-position:inside;
+  margin:0;
+  padding:0; }
