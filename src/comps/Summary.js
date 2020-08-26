@@ -8,7 +8,8 @@ class Summary extends React.Component {
         feature={feature} 
         idx={idx} 
         selected={this.props.selected} 
-        USCurrencyFormat={this.props.USCurrencyFormat}
+        key={feature+idx}
+
         />
       );
       return (<div>{summary}</div>)

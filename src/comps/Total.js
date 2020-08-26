@@ -1,5 +1,5 @@
 import React from 'react';
-
+import USCurrencyFormat from './USCurrencyFormat';
 
 class Total extends React.Component {
      render(){
@@ -7,7 +7,6 @@ class Total extends React.Component {
             (acc, curr) => acc + this.props.selected[curr].cost,
             0
           );
-        const USCurrencyFormat = this.props.USCurrencyFormat;
         return(
         <div className="summary__total">
             <div className="summary__total__label">Total</div>

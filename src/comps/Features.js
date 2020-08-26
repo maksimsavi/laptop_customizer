@@ -1,11 +1,10 @@
 import React from 'react';
-
+import FeatureArrayVar from './FeatureArray'
 import Options from './Options';
 
 class Features extends React.Component {
      render(){
-      const USCurrencyFormat = this.props.USCurrencyFormat;
-      const features = Object.keys(this.props.features).map((feature, idx) => {
+      const features = Object.keys(FeatureArrayVar).map((feature, idx) => {
         const featureHash = feature + '-' + idx;
         console.log(feature);
         
@@ -14,9 +13,10 @@ class Features extends React.Component {
             <legend className="feature__name">
               <h3>{feature}</h3>
             </legend>
-            <Options USCurrencyFormat={USCurrencyFormat} feature={feature} features={this.props.features}
+            <Options feature={feature}
               updateFeature={(a,b)=>this.props.updateFeature(a,b)}
               selected={this.props.selected}
+              key={feature}
             />
           </fieldset>
         );

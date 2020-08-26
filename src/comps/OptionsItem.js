@@ -1,12 +1,11 @@
 import React from 'react';
 import slugify from 'slugify';
-
+import USCurrencyFormat from './USCurrencyFormat';
 class OptionsItem extends React.Component {
   render(){
     const item = this.props.item;
     const feature = this.props.feature;
     const itemHash = slugify(JSON.stringify(item));
-    const USCurrencyFormat = this.props.USCurrencyFormat;
     console.log(item);
     return (
       <li key={itemHash} className="feature__item">

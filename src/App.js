@@ -1,20 +1,7 @@
 import React, { Component } from 'react';
-
-// Normalizes string as a slug - a string that is safe to use
-// in both URLs and html attributes
-import slugify from 'slugify';
-import Summary from './comps/Summary';
-import Total from './comps/Total';
 import './App.css';
-import Features from './comps/Features';
-
-// This object will allow us to
-// easily convert numbers into US dollar values
-const USCurrencyFormat = new Intl.NumberFormat('en-US', {
-  style: 'currency',
-  currency: 'USD'
-});
-
+import MainSummary from './comps/MainSummary';
+import MainForm from './comps/MainForm';
 class App extends Component {
   state = {
     selected: {
@@ -53,20 +40,11 @@ class App extends Component {
           <h1>ELF Computing | Laptops</h1>
         </header>
         <main>
-          <form className="main__form">
-            <h2>Customize your laptop</h2>
-            <Features 
-            features={this.props.features} 
-            selected={this.state.selected} 
-            updateFeature={(a,b)=>this.updateFeature(a,b)} 
-            USCurrencyFormat={USCurrencyFormat}
-            />
-          </form>
-          <section className="main__summary">
-            <h2>Your cart</h2>
-            <Summary selected={this.state.selected} USCurrencyFormat={USCurrencyFormat}/>
-            <Total selected={this.state.selected} USCurrencyFormat={USCurrencyFormat}/>
-          </section>
+          <MainForm 
+          selected={this.state.selected} 
+          updateFeature={(a,b)=>this.updateFeature(a,b)}
+          />
+          <MainSummary selected={this.state.selected} />
         </main>
       </div>
     );

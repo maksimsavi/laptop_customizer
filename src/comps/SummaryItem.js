@@ -1,12 +1,11 @@
 import React from 'react';
-
+import USCurrencyFormat from './USCurrencyFormat';
 class SummaryItem extends React.Component {
    render(){
     const feature = this.props.feature;
     const idx = this.props.idx;
     const featureHash = feature + '-' + idx;
     const selectedOption = this.props.selected[feature];
-    const USCurrencyFormat = this.props.USCurrencyFormat;
     return (
       <div className="summary__option" key={featureHash}>
         <div className="summary__option__label">{feature} </div>
